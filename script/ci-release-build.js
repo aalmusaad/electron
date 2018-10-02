@@ -152,6 +152,7 @@ async function buildVSTS (targetBranch, options) {
 
   if (options.armTest) {
     environmentVariables.CIRCLE_BUILD_NUM = options.circleBuildNum
+    environmentVariables.CONTAINER_OPTIONS = `-u=0 --name=${options.jobName}-${options.circleBuildNum}`
   } else {
     if (!options.ghRelease) {
       environmentVariables.UPLOAD_TO_S3 = 1
